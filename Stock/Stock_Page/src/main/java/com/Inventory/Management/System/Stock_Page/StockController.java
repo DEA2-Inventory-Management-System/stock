@@ -1,8 +1,5 @@
 package com.Inventory.Management.System.Stock_Page;
 
-import com.project.fujicraft_management_system.Request.Request;
-import com.project.fujicraft_management_system.Request.RequestService;
-import com.project.fujicraft_management_system.Request.dto.RequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,26 +10,26 @@ import java.util.List;
 public class StockController {
 
     @Autowired
-    StockService    stockService;
+    StockService    StockService;
 
     @PostMapping("/stock")
     private Stock saveStock(@RequestBody Stock stock){
-        stockService.saveStock(stock);
+        StockService.saveStock(stock);
         return stock;
     }
 
     @GetMapping("/stock")
     private List<Stock> getStock(){
-        return stockService.getStock();
+        return StockService.getStock();
     }
 
     @DeleteMapping("/stock/{id}")
     private ResponseEntity<Object> deleteStock(@PathVariable("id") int id){
-        return stockService.deleteStockById(id);
+        return StockService.deleteStockById(id);
     }
 
     @PutMapping("/stock/{id}")
     private ResponseEntity<Object> updateStock(@PathVariable int id, @RequestBody Stock stock){
-        return stockService.updateRequest(id,stock);
+        return StockService.updateRequest(id,stock);
     }
 }
